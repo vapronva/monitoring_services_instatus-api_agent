@@ -24,6 +24,6 @@ class MetricsParserModel(BaseModel):
 
 
 def getAllMetrics(file: Path) -> List[MetricsParserModel]:
-    with open(file, mode="rb") as f:
-        data = json.loads(f.read())
+    with open(file, mode="rb") as f: # skipcq: PTC-W6004
+        data = json.load(f)
         return [MetricsParserModel(**x) for x in data]
